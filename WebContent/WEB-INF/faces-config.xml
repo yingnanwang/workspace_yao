@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+    version="2.2">
+<managed-bean>
+		<managed-bean-name>AddStuBean</managed-bean-name>
+		<managed-bean-class>HomePage.AddStuBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>lb</property-name>
+			<value>#{LoginBean}</value>
+		</managed-property>
+</managed-bean>
+<managed-bean>
+	<managed-bean-name>LoginBean</managed-bean-name>
+	<managed-bean-class>HomePage.LoginBean</managed-bean-class>
+	<managed-bean-scope>session</managed-bean-scope>
+	<managed-property>
+		<property-name>type</property-name>
+		<value>student</value>
+	</managed-property>
+</managed-bean>
+<managed-bean>
+	<managed-bean-name>StuTreeBean</managed-bean-name>
+	<managed-bean-class>HomePage.StuTreeBean</managed-bean-class>
+	<managed-bean-scope>session</managed-bean-scope>
+	<managed-property>
+		<property-name>lb</property-name>
+		<value>#{LoginBean}</value>
+	</managed-property>
+</managed-bean>
+<navigation-rule>
+	<from-view-id>/HomePage.jsp</from-view-id>
+	<navigation-case>
+		<from-outcome>myhomepage</from-outcome>
+		<to-view-id>/myHomePage.jsp</to-view-id>
+	</navigation-case>
+</navigation-rule>  
+<navigation-rule>
+	<from-view-id>/myHomePage.jsp</from-view-id>
+	<navigation-case>
+		<from-outcome>homepage</from-outcome>
+		<to-view-id>/HomePage.jsp</to-view-id>
+	</navigation-case>
+</navigation-rule>  
+	<application>
+        <locale-config>
+            <default-locale>en</default-locale>
+            <supported-locale>zh_CN</supported-locale>
+        </locale-config>
+        <message-bundle>messages</message-bundle>
+	</application>
+    
+    
+    <converter>
+        <converter-id>MyConveter</converter-id>
+        <converter-class>
+            HomePage.MyConveter
+        </converter-class>
+    </converter>
+</faces-config>
